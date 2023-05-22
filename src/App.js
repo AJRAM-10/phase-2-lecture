@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+
+// Import our components so we can access them in this file!
+import AnimalList from './components/AnimalList';
+import PeopleList from './components/PeopleList';
+
+// Import our data
+import { animals, people } from './data'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* Render our AnimalList component, passing our data in as a prop called animals */}
+      <AnimalList animals={animals} />
+      
+      {/* 
+        Second Demo, uncomment line 20 if you want to see it in action.
+        I didn't comment each step of this process, so feel free to add your own comments
+        to make sure you understand this flow!
+      */}
+      {/* <PeopleList people={people} /> */}
     </div>
   );
 }
