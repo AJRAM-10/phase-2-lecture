@@ -2,11 +2,18 @@
 import Animal from "./Animal"
 
 // Define a component (function) that takes in a prop of animals and (ideally) destructure to grab that value
-const AnimalList = ({ animals }) => {
+const AnimalList = ({ animals, searchTerm }) => {
 
-    // Map over our array of data and render one Animal component for each animal object
+    // Take our searchTerm prop from App.js and filter out our animal data
+    const filteredAnimals = animals.filter((animal) => {
+        // i want to compare animal.name to searchTerm (added in the option to search for species too)
+        return animal.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        animal.species.toLowerCase().includes(searchTerm.toLowerCase())
+    })
+
+    // Map over our array of (now filtered!) data and render one Animal component for each animal object
     //   passing in the appropriate data for each animal
-    const renderAnimals = animals.map(animal => {
+    const renderAnimals = filteredAnimals.map(animal => {
         return <Animal key={animal.name} species={animal.species} name={animal.name} />
     })
 
