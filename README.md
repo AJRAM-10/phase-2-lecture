@@ -1,8 +1,8 @@
 # Phase 2 Lecture
 
-### 1: Components and Props
+### 1: Components and Props ✅
 
-### 2: State and Events
+### 2: State and Events ✅
 
 ### 3: Information Flow
 
