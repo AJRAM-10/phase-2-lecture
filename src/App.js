@@ -5,11 +5,13 @@ import AnimalList from './components/AnimalList';
 import PeopleList from './components/PeopleList';
 import SelectedAnimal from './components/SelectedAnimal';
 import Navbar from './components/Navbar';
+import FormOne from './components/FormOne';
+import FormTwo from './components/FormTwo';
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 // Import our data
-import { animals, people } from './data'
+// import { animals, people } from './data'
 import FlexDemo from './components/FlexDemo';
 
 function App() {
@@ -18,6 +20,14 @@ function App() {
   const [ searchTerm, setSearchTerm ] = useState("")
   // Day 3 - Create state to store the animal we click
   const [ selectedAnimal, setSelectedAnimal ] = useState({})
+  const [ animals, setAnimals ] = useState([])
+
+  // On page load, fetch our data and set our state with that data
+  useEffect(() => {
+    fetch("http://localhost:3000/animals")
+      .then(resp => resp.json())
+      .then(animals => setAnimals(animals))
+  }, [])
 
   function handleClick() {
     // we want to set our count state here
@@ -27,6 +37,11 @@ function App() {
   function handleSearch(e) {
     // Take in the value from our input and use it to set the state for our searchTerm
     setSearchTerm(e.target.value)
+  }
+
+  // Handler function to add animals to our animal state array
+  function handleAddAnimal(newAnimal) {
+    setAnimals([...animals, newAnimal])
   }
 
   return (
@@ -49,6 +64,19 @@ function App() {
         
         {/* Day 3 - created SelectedAnimal and passed in our selectedAnimal from state */}
         <SelectedAnimal animal={selectedAnimal} />
+      </div>
+
+      <div className="form-container">
+        <h3>Create an Animal</h3>
+        {/* 
+            Remember to pass our setter function or our custom handler as a prop
+            so we can update the state and re-render after submitting the form
+        */}
+        {/* <FormOne 
+          animals={animals}
+          setAnimals={setAnimals}
+        /> */}
+        <FormTwo handleAddAnimal={handleAddAnimal} />
       </div>
 
       {/* 

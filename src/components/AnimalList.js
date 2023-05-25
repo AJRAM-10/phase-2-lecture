@@ -17,7 +17,7 @@ const AnimalList = ({ animals, searchTerm, setSelectedAnimal }) => {
     const renderAnimals = filteredAnimals.map(animal => {
         return (
             <Animal 
-                key={animal.name} 
+                key={animal.id} 
                 species={animal.species} 
                 name={animal.name}
                 animal={animal}
