@@ -3,18 +3,21 @@ import './App.css';
 // Import our components so we can access them in this file!
 import AnimalList from './components/AnimalList';
 import PeopleList from './components/PeopleList';
+import SelectedAnimal from './components/SelectedAnimal';
+import Navbar from './components/Navbar';
 
 import { useState } from 'react'
 
 // Import our data
 import { animals, people } from './data'
+import FlexDemo from './components/FlexDemo';
 
 function App() {
   // const [ stateVariable, stateVariableSetter ] = useState(initialValue)
   const [ count, setCount ] = useState(0)
   const [ searchTerm, setSearchTerm ] = useState("")
-
-  console.log(useState("Morgan"))
+  // Day 3 - Create state to store the animal we click
+  const [ selectedAnimal, setSelectedAnimal ] = useState({})
 
   function handleClick() {
     // we want to set our count state here
@@ -28,20 +31,26 @@ function App() {
 
   return (
     <div className="App">
+      {/* Create Navbar and pass in our search function as a prop */}
+      <Navbar handleSearch={handleSearch} />
 
       {/* 
         Creating our search input - using onChange as our event listener to trigger our handleSearch function
       */}
-      <input 
-        type="text"
-        placeholder="Search"
-        onChange={handleSearch}
-      />
 
       {/* Render our AnimalList component, passing our data in as a prop called animals */}
       {/* Day 2 - now we're passing our searchTerm in as well so we can filter our data! */}
-      <AnimalList animals={animals} searchTerm={searchTerm} />
-      
+      <div className="main-content">
+        <AnimalList 
+          animals={animals} 
+          searchTerm={searchTerm}
+          setSelectedAnimal={setSelectedAnimal}
+        />
+        
+        {/* Day 3 - created SelectedAnimal and passed in our selectedAnimal from state */}
+        <SelectedAnimal animal={selectedAnimal} />
+      </div>
+
       {/* 
         Second Demo, uncomment line 20 if you want to see it in action.
         I didn't comment each step of this process, so feel free to add your own comments

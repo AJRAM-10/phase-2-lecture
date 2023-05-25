@@ -2,7 +2,7 @@
 import Animal from "./Animal"
 
 // Define a component (function) that takes in a prop of animals and (ideally) destructure to grab that value
-const AnimalList = ({ animals, searchTerm }) => {
+const AnimalList = ({ animals, searchTerm, setSelectedAnimal }) => {
 
     // Take our searchTerm prop from App.js and filter out our animal data
     const filteredAnimals = animals.filter((animal) => {
@@ -13,8 +13,17 @@ const AnimalList = ({ animals, searchTerm }) => {
 
     // Map over our array of (now filtered!) data and render one Animal component for each animal object
     //   passing in the appropriate data for each animal
+    // Day 3 - Passed in the state setter (from App.js) to each individual animal
     const renderAnimals = filteredAnimals.map(animal => {
-        return <Animal key={animal.name} species={animal.species} name={animal.name} />
+        return (
+            <Animal 
+                key={animal.name} 
+                species={animal.species} 
+                name={animal.name}
+                animal={animal}
+                setSelectedAnimal={setSelectedAnimal}
+            />
+        )
     })
 
     return (

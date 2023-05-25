@@ -41,4 +41,54 @@
   border: 1px solid #999;
   width: 30%;
   margin: 20px;
+  padding: 20px;
+}
+
+.animal h1 {
+  margin: 0;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid hotpink;
+
+  align-items: center;
+  margin: 20px;
+}
+
+.navbar {
+  height: 50px;
+  background-color: teal;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5em;
+
+  padding-left: 20px;
+  padding-right: 20px;
+
+  display: flex;
+  align-items: center; /* align our items vertically */
+  justify-content: space-between; /* spread the flex items within this container to the edges of the container */
+}
+
+.navbar input {
+  padding: 5px;
+}
+
+.flex-item {
+  /* height: 50px;
+  width: 50px; */
+  border: 1px solid hotpink;
+  padding: 10px;
+  margin: 10px;
+}
+
+.flex-demo {
+  border: 1px solid limegreen;
+  /* height: 90vh; */
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
 }

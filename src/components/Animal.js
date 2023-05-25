@@ -3,12 +3,10 @@
 import { useState } from "react";
 
 // destructure the values we want to access
-function Animal({ species, name }) {
+function Animal({ species, name, setSelectedAnimal, animal }) {
     const [ count, setCount ] = useState(0)
     const [ isPet, setIsPet ] = useState(false)
     const [ timesFed, setTimesFed ] = useState(5)
-
-    console.log(useState())
 
     // Create a function to toggle state!
     function handleClick() {
@@ -42,24 +40,27 @@ function Animal({ species, name }) {
         }
     }
 
+    function handleSelectAnimal() {
+        setSelectedAnimal(animal)
+    }
+
     // Return our JSX with data filled in!
     // Remember <> </> is called a React Fragment - in this case we don't actually need it because we have one top level div on line 15
     //   but if you wanted just the <h1> and <p> without the parent div, you would use fragments
     return (
-        <>
-            <div className="animal">
-                {/* Wrap your JS values in curly brackets to interpolate within JSX */}
-                <h1>{species}</h1>
-                <p>{name}</p>
+        // Day 3 - we added an onClick listener to set our selected animal - inverse data flow!
+        <div className="animal" onClick={handleSelectAnimal}>
+            {/* Wrap your JS values in curly brackets to interpolate within JSX */}
+            <h1>{species}</h1>
+            <p>{name}</p>
 
-                <span>{timesFed} treats remaining</span>
+            <span>{timesFed} treats remaining</span>
 
-                {/* Ternary for our toggle below */}
-                {/* <p>{ isPet ? "Been Pet" : "Pet me!" }</p> */}
+            {/* Ternary for our toggle below */}
+            {/* <p>{ isPet ? "Been Pet" : "Pet me!" }</p> */}
 
-                {renderButtonOrNothing()}
-            </div>
-        </>
+            {renderButtonOrNothing()}
+        </div>
     )
 }
 
