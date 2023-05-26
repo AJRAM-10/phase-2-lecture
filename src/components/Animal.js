@@ -54,7 +54,7 @@ function Animal({ species, name, setSelectedAnimal, animal }) {
             <h1>{species}</h1>
             <p>{name}</p>
 
-            <span>{timesFed} treats remaining</span>
+            <p>{timesFed} treats remaining</p>
 
             {/* Ternary for our toggle below */}
             {/* <p>{ isPet ? "Been Pet" : "Pet me!" }</p> */}
